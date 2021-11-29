@@ -1,0 +1,53 @@
+name: test-read-files
+
+on:
+  push:
+    branch:
+      - ['**']
+
+jobs:
+  readfile:
+    name: test
+    runs-on: ubuntu-latest
+    outputs:
+      dockerhub_repo: ${{steps.dockerhub.outputs.repo}}
+      dockerhub_image:  ${{steps.dockerhub.outputs.image}}
+    steps:
+    - uses: actions/checkout@v2
+    - name: Read setup file
+      id: read 
+      run: |
+        echo 'SETUP_JSON<<EOF' >> $GITHUB_ENV
+        cat setup.json >> $GITHUB_ENV
+        echo 'EOF' >> $GITHUB_ENV
+        cat $GITHUB_ENV
+    - name: show json content
+      run: |
+        echo '${{env.SETUP_JSON}}'
+        echo '${{fromJson(env.SETUP_JSON).dockerhub_repo}}'
+        echo '${{fromJson(env.SETUP_JSON).dockerhub_image}}'
+    - name: parse setup json 
+      run: |
+        echo repo=${{fromJson(env.SETUP_JSON).dockerhub_repo}}
+        echo image=${{fromJson(env.SETUP_JSON).dockerhub_image}}
+    - 
+      name: parse setup json (2) 
+      id: dockerhub
+      run: |
+        echo  "::set-output name=repo::${{fromJson(env.SETUP_JSON).dockerhub_repo}}"
+        echo  "::set-output name=image::${{fromJson(env.SETUP_JSON).dockerhub_image}}"
+    - 
+      name: use var same job
+      run: |
+        echo ${{steps.dockerhub.outputs.repo}}
+        echo ${{steps.dockerhub.outputs.image}}
+
+  usevars:
+    runs-on: ubuntu-latest
+    needs: readfile
+    steps:
+    - run: |
+        echo ${{needs.readfile.outputs.dockerhub_repo}}
+        echo ${{needs.readfile.outputs.dockerhub_image}}
+
+
