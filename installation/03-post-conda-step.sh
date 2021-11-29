@@ -23,7 +23,7 @@ conda list
 ## conda.
 
 Rscript  -<<EOF 
-install.packages("remotes")
+install.packages("remotes", repos = "https://cloud.r-project.org")
 remotes::install_github("stan-dev/rstantools")
 # adds quantify PSI function
 remotes::install_github("davidaknowles/leafcutter/leafcutter", ref = "psi_2019")
