@@ -28,3 +28,5 @@ remotes::install_github("stan-dev/rstantools")
 # adds quantify PSI function
 remotes::install_github("davidaknowles/leafcutter/leafcutter", ref = "psi_2019")
 EOF
+
+git clone https://github.com/RajLabMSSM/leafcutter-pipeline.git
