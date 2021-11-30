@@ -6,8 +6,8 @@ dependencies:
   - openjdk=8.0.152
   - bwa==0.7.17
   - samtools==1.14
-  - r-base==3.6.0
-  - r-essentials=3.6.0
+  - r-base<=3.6.0
+  - r-essentials
   - python=3.6
   - bioconda::tabix==1.11
   - ghostscript==9.54.0
