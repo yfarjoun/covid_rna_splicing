@@ -14,7 +14,7 @@ set +e \
   && . "$(conda info --base)"/etc/profile.d/conda.sh \
   && conda activate "${ENV}"
 
-set -euo pipefail
+set -xeuo pipefail
 
 conda info 
 conda list
@@ -23,10 +23,10 @@ conda list
 ## conda.
 
 Rscript  -<<EOF 
-install.packages("remotes", repos = "https://cloud.r-project.org")
-remotes::install_github("stan-dev/rstantools")
+install.packages("remotes", repos = "https://cloud.r-project.org") || quit(1) 
+remotes::install_github("stan-dev/rstantools") || quit(2)
 # adds quantify PSI function
-remotes::install_github("davidaknowles/leafcutter/leafcutter", ref = "psi_2019")
+remotes::install_github("davidaknowles/leafcutter/leafcutter", ref = "psi_2019") || quit(3)
 EOF
 
 git clone https://github.com/RajLabMSSM/leafcutter-pipeline.git
