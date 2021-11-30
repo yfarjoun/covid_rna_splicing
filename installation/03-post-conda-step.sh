@@ -23,13 +23,19 @@ conda list
 ## conda.
 
 Rscript  -<<EOF 
-install.packages("remotes", repos = "https://cloud.r-project.org") || quit(1) 
 
-remotes::install_github("rstudio/renv") || quit(1)
+install.packages("remotes", repos = "https://cloud.r-project.org")
 
-remotes::install_github("stan-dev/rstantools") || quit(1)
+remotes::install_github("rstudio/renv") 
+if(! installed.packages("renv")){ quit(1) }
+
+remotes::install_github("stan-dev/rstantools")
+if(! installed.packages("rstantools")){ quit(1) }
+
 # adds quantify PSI function
-remotes::install_github("davidaknowles/leafcutter/leafcutter", ref = "psi_2019") || quit(1)
+remotes::install_github("davidaknowles/leafcutter", ref = "psi_2019") 
+if(! installed.packages("leafcutter")){ quit(1) }
+
 EOF
 
 git clone https://github.com/RajLabMSSM/leafcutter-pipeline.git
