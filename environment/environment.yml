@@ -8,7 +8,6 @@ dependencies:
   - samtools==1.14
   - r-base==3.6.0
   - r-essentials=3.6.0
-  - r-renv=0.14.0 
   - python=3.6
   - bioconda::tabix==1.11
   - ghostscript==9.54.0
