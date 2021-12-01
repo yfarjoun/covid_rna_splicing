@@ -7,7 +7,7 @@ RUN apt-get -qq update && apt-get -qq install -y curl git
 ENV TZ=America/New_York
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apt-get -qq update && apt-get -qq install -y vim less unzip
+RUN apt-get -qq update && apt-get -qq install -y vim less unzip libv8-dev
 
 WORKDIR /app/
 
