@@ -27,14 +27,14 @@ Rscript  -<<EOF
 install.packages("remotes", repos = "https://cloud.r-project.org")
 
 install.packages("renv", repos = "https://cloud.r-project.org")
-if (!installed.packages("renv")){ quit(1) }
+if (! "renv" %in% rownames(installed.packages())){ quit(1) }
 
 remotes::install_github("stan-dev/rstantools")
-if (!installed.packages("rstantools")){ quit(1) }
+if (! "rstantools" %in% rownames(installed.packages())){ quit(1) }
 
 # adds quantify PSI function
 remotes::install_github("davidaknowles/leafcutter", ref = "psi_2019") 
-if(! installed.packages("leafcutter")){ quit(1) }
+if (! "leafcutter" %in% rownames(installed.packages())){ quit(1) }
 
 EOF
 
