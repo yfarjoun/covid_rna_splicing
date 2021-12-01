@@ -22,6 +22,8 @@ conda list
 ## all the commands below can be removed or changed to include the software/files you need but cannot install via 
 ## conda.
 
+export TAR=/bin/tar
+
 Rscript  -<<EOF 
 
 install.packages("remotes", repos = "https://cloud.r-project.org")
@@ -33,7 +35,7 @@ remotes::install_github("stan-dev/rstantools")
 if (! "rstantools" %in% rownames(installed.packages())){ quit(1) }
 
 # adds quantify PSI function
-remotes::install_github("davidaknowles/leafcutter", ref = "psi_2019") 
+remotes::install_github("davidaknowles/leafcutter/leafcutter", ref = "psi_2019") 
 if (! "leafcutter" %in% rownames(installed.packages())){ quit(1) }
 
 EOF
