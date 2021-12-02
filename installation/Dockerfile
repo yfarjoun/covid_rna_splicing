@@ -17,14 +17,13 @@ RUN ./01-install-conda.sh
 ENV PATH=/root/miniconda/bin:${PATH}
 
 COPY installation/02-create-env.sh environment/environment.yml .
-
 RUN ./02-create-env.sh
 
-# RUN conda init bash
+COPY installation/03-download-reference.sh .
+RUN ./03-download-reference.sh 
 
-COPY installation/03-post-conda-step.sh .
-
-RUN ./03-post-conda-step.sh
+COPY installation/04-post-conda-step.sh .
+RUN ./04-post-conda-step.sh
 
 WORKDIR /app
 
