@@ -32,7 +32,7 @@ curl -L https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_38/gen
 # tabix gencode.v38.annotation.gtf.gz
 
 curl -L https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_38/GRCh38.p13.genome.fa.gz --output GRCh38.p13.genome.fa.gz
-bwa index GRCh38.p13.genome.fa.gzGRCh38.p13.genome.fa.gz
+bwa index GRCh38.p13.genome.fa.gz
 
 ls
 popd 
