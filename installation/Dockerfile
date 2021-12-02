@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 WORKDIR /home/
 # System packages 
-RUN apt-get -qq update && apt-get -qq install -y curl git 
+RUN apt-get -qq update && apt-get -qq install -y curl git
 
 ENV TZ=America/New_York
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone

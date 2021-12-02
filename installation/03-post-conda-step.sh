@@ -26,16 +26,14 @@ export TAR=/bin/tar
 
 Rscript  -<<EOF 
 
-install.packages("remotes", repos = "https://cloud.r-project.org")
-
 install.packages("renv", repos = "https://cloud.r-project.org")
-if (! "renv" %in% rownames(installed.packages())){ quit(1) }
+if (! "renv" %in% rownames(installed.packages())){ quit(save="no",status=1) }
 
-remotes::install_github("stan-dev/rstantools")
-if (! "rstantools" %in% rownames(installed.packages())){ quit(1) }
+remotes::install_github("stan-dev/rstantools", quiet=TRUE)
+if (! "rstantools" %in% rownames(installed.packages())){ quit(save="no",status=1) }
 
 # adds quantify PSI function
-remotes::install_github("davidaknowles/leafcutter/leafcutter", ref = "psi_2019") 
+remotes::install_github("davidaknowles/leafcutter/leafcutter", ref = "psi_2019", quiet=TRUE) 
 if (! "leafcutter" %in% rownames(installed.packages())){ quit(1) }
 
 EOF
