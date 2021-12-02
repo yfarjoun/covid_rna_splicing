@@ -23,6 +23,7 @@ RUN ./02-create-env.sh
 # RUN conda init bash
 
 COPY installation/03-post-conda-step.sh .
+
 RUN ./03-post-conda-step.sh
 
 WORKDIR /app
