@@ -40,8 +40,6 @@ EOF
 
 git clone https://github.com/RajLabMSSM/leafcutter-pipeline.git
 
-cp example.yaml leafcutter-pipeline/examples/
-
 mkdir reference
 pushd reference
 
