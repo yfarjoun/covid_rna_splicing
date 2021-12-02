@@ -22,6 +22,21 @@ conda list
 ## all the commands below can be removed or changed to include the software/files you need but cannot install via 
 ## conda.
 
+
+git clone https://github.com/RajLabMSSM/leafcutter-pipeline.git
+
+mkdir reference
+pushd reference
+
+curl -L https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_38/gencode.v38.annotation.gtf.gz --output gencode.v38.annotation.gtf.gz
+tabix gencode.v38.annotation.gtf.gz
+
+curl -L https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_38/GRCh38.p13.genome.fa.gz --output GRCh38.p13.genome.fa.gz
+bwa index GRCh38.p13.genome.fa.gzGRCh38.p13.genome.fa.gz
+
+ls
+popd 
+
 export TAR=/bin/tar
 
 Rscript  -<<EOF 
@@ -38,16 +53,3 @@ if (! "leafcutter" %in% rownames(installed.packages())){ quit(1) }
 
 EOF
 
-git clone https://github.com/RajLabMSSM/leafcutter-pipeline.git
-
-mkdir reference
-pushd reference
-
-curl -L https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_38/gencode.v38.annotation.gtf.gz --output gencode.v38.annotation.gtf.gz
-tabix index gencode.v38.annotation.gtf.gz
-
-curl -L https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_38/GRCh38.p13.genome.fa.gz --output GRCh38.p13.genome.fa.gz
-bwa index GRCh38.p13.genome.fa.gzGRCh38.p13.genome.fa.gz
-
-ls
-popd 
