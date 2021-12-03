@@ -25,6 +25,8 @@ conda list
 
 git clone https://github.com/RajLabMSSM/leafcutter-pipeline.git
 
+git clone https://github.com/davidaknowles/leafcutter.git
+
 mkdir reference
 pushd reference
 
