@@ -15,5 +15,6 @@ dependencies:
   - ghostscript==9.54.0
   - snakemake
   - regtools=0.5.0
+  - ucsc-gtftogenepred
 
 

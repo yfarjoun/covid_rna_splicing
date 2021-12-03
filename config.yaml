@@ -1,0 +1,66 @@
+#####################
+#Leafcutter Pipeline#
+#####################
+
+
+dataCode: 'example'
+
+metadata: 'example/samples.tsv'
+
+# dataCode will be appended to outFolder
+outFolder: 'results/'
+
+# differential splicing - set reference and alternate conditions
+refCondition: 
+    - 'condition1'
+altCondition: 
+    - 'condition2'
+    - 'condition3'
+contrastSep: "_"
+
+inFolder: 'example/data/'
+
+# bamSuffix - what to append to the sample name to get the BAM file name
+bamSuffix: '.bam'
+
+# juncSuffix
+# for samples processed with RAPiD use filtered junctions : {sample}.Aligned.Quality.Sorted.bam.junc 
+juncSuffix: '.junc' 
+
+# how the stranding was done (0 = unstranded, 1 = first-strand/RF, 2, = second-strand/FR)
+# this assumes stranding same for every sample
+stranded: 0
+
+
+## Leafcutter settings ---------------------------------
+
+# cluster using regtools junctions or STAR-like junctions
+# regtools or rapid
+
+clusterRegtools: True
+junctionQC: False 
+
+leafcutterPath: '~/leafcutter'
+
+leafcutter:
+        # clustering options
+        minCluRatio: 0.01
+        minCluReads: 50
+        intronMax: 100000
+        # QC options
+        missingness: 0.5
+        maxsize: 10
+        minratio: 0.05
+        # ds options
+        samplesPerIntron: 2
+        samplesPerGroup: 2
+        minCoverage: 20
+        n_threads: 4
+        FDR_limit: 0.05
+python3Path: 'python3'
+python2Path: 'python2'
+
+refFolder: "/app/reference/"
+refFile: "gencode.v38.annotation.gtf.gz"
+refCode: "gencode_hg38_v38"
+
