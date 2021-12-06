@@ -16,5 +16,6 @@ dependencies:
   - snakemake
   - regtools=0.5.0
   - ucsc-gtftogenepred
+  - bioconda::r-biocmanager
 
 

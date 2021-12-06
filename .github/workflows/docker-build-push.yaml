@@ -158,7 +158,7 @@ jobs:
           shell: /bin/bash
           quote_argument: true
           # you have to escape the space that follows the colon character because otherwise it breaks the yaml....
-          # also not that the double single-quotes will be converted into single single-quotes....
+          # also note that the double single-quotes will be converted into single single-quotes....
           run: bwa 2>&1 |  grep -e ''^Version'' |  sed ''s/Version:\ //''
       -
         name: test python as shell
@@ -171,8 +171,17 @@ jobs:
           shell: python
           quote_argument: true
           run: print("hello")
-      - 
-        name: list files
+      - name: test R
+        uses: yfarjoun/docker-run-action@yf_optional_quote_input
+        with:
+          image: ${{ needs.variables.outputs.branch_tag }}
+          options: -v ${{ github.workspace }}/test:/app/local
+          script_prefix: -e
+          shell: R
+          quote_argument: true
+          # Note that the double single-quotes will be converted into single single-quotes....
+          run: library(''GenomicFeatures'')
+      - name: testlist files
         if: always()
         run: ls -R ${{ github.workspace }}
       

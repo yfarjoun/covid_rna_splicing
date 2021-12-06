@@ -42,5 +42,8 @@ if (! "rstantools" %in% rownames(installed.packages())){ quit(save="no",status=1
 remotes::install_github("davidaknowles/leafcutter/leafcutter", ref = "psi_2019", quiet=TRUE) 
 if (! "leafcutter" %in% rownames(installed.packages())){ quit(1) }
 
+# install GenomicFeatures
+BiocManager::install("GenomicFeatures")
+
 EOF
 
