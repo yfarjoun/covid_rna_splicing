@@ -16,6 +16,7 @@ RUN ./01-install-conda.sh
 
 ENV PATH=/root/miniconda/bin:${PATH}
 
+## a change in the environment.yml __should__ invalidate everything after this point.
 COPY installation/02-create-env.sh environment/environment.yml .
 RUN ./02-create-env.sh
 

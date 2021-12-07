@@ -11,11 +11,11 @@ dependencies:
   - r-rstan
   - r-remotes
   - python=3.6
-  - bioconda::tabix==1.11
+  - tabix==1.11
   - ghostscript==9.54.0
   - snakemake
   - regtools=0.5.0
   - ucsc-gtftogenepred
-  - bioconda::r-biocmanager
+  - r-biocmanager
 
 
