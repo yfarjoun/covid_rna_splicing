@@ -1,27 +1,9 @@
 #!/bin/bash 
 
-## run post-conda steps
-BASEDIR="$(dirname "$0")"
-
-ENV="analysis"
-
-echo BASEDIR="$BASEDIR"
-echo RUNNING post-conda steps
-
-# shellcheck source=/dev/null
-set +e \
-  && PS1='$$$ ' \
-  && . "$(conda info --base)"/etc/profile.d/conda.sh \
-  && conda activate "${ENV}"
-
-set -xeuo pipefail
-
-conda info 
-conda list
+set  -xeuo pipefail
 
 mkdir reference
 pushd reference
-
 
 for file in \
 	https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_38/gencode.v38.annotation.gtf.gz \
@@ -36,7 +18,6 @@ for file in \
 	https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.fasta.fai 
 do
 	curl  -L "${file}" --output "$(basename file)" 
-
 done
 
 ls
