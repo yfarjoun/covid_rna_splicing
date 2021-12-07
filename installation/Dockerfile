@@ -6,36 +6,37 @@ WORKDIR /app
 COPY installation/free_disk_space.sh .
 RUN ./free_disk_space.sh
 
-WORKDIR /home/
-# System packages 
+# WORKDIR /home/
+# # System packages 
 
-RUN apt-get -qq update && apt-get -qq install -y curl git
+# RUN apt-get -qq update && apt-get -qq install -y curl git
 
-ENV TZ=America/New_York
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+# ENV TZ=America/New_York
+# RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apt-get -qq update && apt-get -qq install -y vim less unzip libv8-dev
+# RUN apt-get -qq update && apt-get -qq install -y vim less unzip libv8-dev
 
-WORKDIR /app/
+# WORKDIR /app/
 
-COPY installation/00-download-reference.sh .
-RUN ./00-download-reference.sh 
+# COPY installation/00-download-reference.sh .
+# RUN ./00-download-reference.sh 
 
-COPY installation/01-install-conda.sh .
-RUN ./01-install-conda.sh
+# COPY installation/01-install-conda.sh .
+# RUN ./01-install-conda.sh
 
-ENV PATH=/root/miniconda/bin:${PATH}
+# ENV PATH=/root/miniconda/bin:${PATH}
 
-## a change in the environment.yml __should__ invalidate everything after this point.
-COPY installation/02-create-env.sh environment/environment.yml .
-RUN ./02-create-env.sh
+# ## a change in the environment.yml __should__ invalidate everything after this point.
+# COPY installation/02-create-env.sh environment/environment.yml .
+# RUN ./02-create-env.sh
 
-COPY installation/03-post-conda-step.sh .
-RUN ./03-post-conda-step.sh
+# COPY installation/03-post-conda-step.sh .
+# RUN ./03-post-conda-step.sh
 
-WORKDIR /app
+# WORKDIR /app
 
 COPY scripts/entrypoint.sh  .
+COPY scripts/reheader_corrupt_bams.sh installation/
 
 ENTRYPOINT ["/app/entrypoint.sh"]
 
