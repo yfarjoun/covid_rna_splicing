@@ -42,4 +42,5 @@ CMD ["Hello project_template user."]
 WORKDIR /app/installation
 COPY installation/Dockerfile .
 
+
 WORKDIR /app

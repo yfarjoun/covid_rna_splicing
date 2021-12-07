@@ -102,6 +102,9 @@ jobs:
           echo branch = ${{ needs.variables.outputs.branch_tag }}
           echo hash = ${{ steps.hash.outputs.hash }}
           echo github.workspace = ${{ github.workspace }}
+      - name: clear up some space
+        run: installation/free_disk_space.sh
+
       -
         name: Build and push branch
         uses: docker/build-push-action@v2

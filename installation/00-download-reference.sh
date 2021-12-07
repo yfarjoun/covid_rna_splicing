@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-set  -xeuo pipefail
+set  -euo pipefail
 
 mkdir reference
 pushd reference
@@ -17,7 +17,7 @@ for file in \
 	https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.fasta.64.sa \
 	https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.fasta.fai 
 do
-	curl  -L "${file}" --output "$(basename ${file})" 
+	curl --no-progress-meter -L "${file}" --output "$(basename ${file})" 
 done
 
 ls
