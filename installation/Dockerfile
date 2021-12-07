@@ -2,12 +2,9 @@ FROM ubuntu:18.04
 
 WORKDIR /app
 
-RUN df -h
 #from https://github.com/apache/flink/blob/02d30ace69dc18555a5085eccf70ee884e73a16e/tools/azure-pipelines/free_disk_space.sh
 COPY installation/free_disk_space.sh .
-RUN free_disk_space.sh
-
-RUN df -h 
+RUN ./free_disk_space.sh
 
 WORKDIR /home/
 # System packages 
