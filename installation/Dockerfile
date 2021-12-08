@@ -1,9 +1,5 @@
 FROM ubuntu:18.04
 
-WORKDIR /app
-
-COPY installation/00-download-reference.sh .
-RUN ./00-download-reference.sh 
 
 WORKDIR /home/
 # System packages 
@@ -16,6 +12,9 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get -qq update && apt-get -qq install -y vim less unzip libv8-dev
 
 WORKDIR /app/
+
+COPY installation/00-download-reference.sh .
+RUN ./00-download-reference.sh 
 
 COPY installation/01-install-conda.sh .
 RUN ./01-install-conda.sh

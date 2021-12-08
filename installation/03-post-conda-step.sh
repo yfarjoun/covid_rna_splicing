@@ -28,7 +28,7 @@ git clone https://github.com/yfarjoun/leafcutter-pipeline.git
 git clone https://github.com/davidaknowles/leafcutter.git
 
 # fix example bams:
-find leafcutter-pipeline/example/data/ -name '*bam' | xargs -n1 installation/reheader_corrupt_bams.sh 
+find leafcutter-pipeline/example/data/ -name '*bam' -exec installation/reheader_corrupt_bams.sh {} \; 
 
 export TAR=/bin/tar
 
