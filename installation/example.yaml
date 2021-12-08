@@ -60,6 +60,6 @@ leafcutter:
 python3Path: 'python3'
 python2Path: 'python2'
 
-refFolder: "/reference/"
+refFolder: "/app/reference/"
 refFile: "gencode.v38.annotation.gtf.gz"
 refCode: "gencode_hg38_v38"

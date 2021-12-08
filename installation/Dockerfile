@@ -2,6 +2,8 @@ FROM ubuntu:18.04
 
 WORKDIR /app
 
+COPY installation/00-download-reference.sh .
+RUN ./00-download-reference.sh 
 
 WORKDIR /home/
 # System packages 
@@ -24,17 +26,15 @@ ENV PATH=/root/miniconda/bin:${PATH}
 COPY installation/02-create-env.sh environment/environment.yml .
 RUN ./02-create-env.sh
 
+COPY scripts/reheader_corrupt_bams.sh installation/
+COPY config.yaml installation/
+
 COPY installation/03-post-conda-step.sh .
 RUN ./03-post-conda-step.sh
 
 WORKDIR /app
 
-COPY installation/00-download-reference.sh .
-RUN ./00-download-reference.sh 
-
 COPY scripts/entrypoint.sh  .
-COPY scripts/reheader_corrupt_bams.sh installation/
-
 ENTRYPOINT ["/app/entrypoint.sh"]
 
 CMD ["Hello project_template user."]

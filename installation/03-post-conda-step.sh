@@ -23,10 +23,12 @@ conda list
 ## conda.
 
 
-git clone https://github.com/RajLabMSSM/leafcutter-pipeline.git
+git clone https://github.com/yfarjoun/leafcutter-pipeline.git
 
 git clone https://github.com/davidaknowles/leafcutter.git
 
+# fix example bams:
+find leafcutter-pipeline/example/data/ -name '*bam' | xargs -n1 installation/reheader_corrupt_bams.sh 
 
 export TAR=/bin/tar
 
@@ -46,4 +48,6 @@ if (! "leafcutter" %in% rownames(installed.packages())){ quit(1) }
 BiocManager::install("GenomicFeatures", quiet=TRUE, update=FALSE, ask=FALSE)
 
 EOF
+
+
 

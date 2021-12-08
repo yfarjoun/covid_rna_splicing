@@ -40,7 +40,7 @@ stranded: 0
 clusterRegtools: True
 junctionQC: False 
 
-leafcutterPath: '~/leafcutter'
+leafcutterPath: '/app/leafcutter'
 
 leafcutter:
         # clustering options

@@ -160,7 +160,7 @@ rule extractJunctions:
         "regtools junctions extract -a 8 -i 50 -I 500000 -s {stranded} -o {output} {input.bam}"
         # conda version of regtools uses i and I instead of m and M 
         # "ml regtools/0.5.1; "
-        #"regtools junctions extract -a 8 -m 50 -M 500000 -s {stranded} -o {output} {input.bam}"
+        # "regtools junctions extract -a 8 -m 50 -M 500000 -s {stranded} -o {output} {input.bam}"
 
 
 # remove weird contigs that cause add_chr() to break by adding "chr" to normal chr names
@@ -326,7 +326,7 @@ rule getTerminalExons:
         "{params.gtftogenepred} {input} {output.genepred};"
         "python {params.genepredtobed} --first_exon {output.genepred} > {output.starts} ; "
         "python {params.genepredtobed} --last_exon {output.genepred} > {output.ends}; "
-        "mkdir -p {params.outFolder}; "
+        "mkdir {params.outFolder}; "
         "Rscript {params.get_regions} {input} {params.outFolder}"
 
 # prepare results for shiny visualisation

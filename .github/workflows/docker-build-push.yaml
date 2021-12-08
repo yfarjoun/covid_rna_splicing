@@ -102,7 +102,8 @@ jobs:
           echo branch = ${{ needs.variables.outputs.branch_tag }}
           echo hash = ${{ steps.hash.outputs.hash }}
           echo github.workspace = ${{ github.workspace }}
-      - name: clear up some space
+      - # from https://github.com/apache/flink/blob/02d30ace69dc18555a5085eccf70ee884e73a16e/tools/azure-pipelines/free_disk_space.sh
+        name: clear up some space
         run: installation/free_disk_space.sh
 
       -
@@ -182,8 +183,7 @@ jobs:
           script_prefix: -e
           shell: R
           quote_argument: true
-          # Note that the double single-quotes will be converted into single single-quotes....
-          run: library(''GenomicFeatures'')
+          run: library(GenomicFeatures)
       - name: testlist files
         if: always()
         run: ls -R ${{ github.workspace }}
